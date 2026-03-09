@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Mój Własny Downloader</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; background: #121212; color: white; }
+        .box { margin-top: 100px; padding: 20px; }
+        input { padding: 10px; width: 300px; }
+        button { padding: 10px 20px; background: red; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>YouTube Downloader (Node.js)</h1>
+        <input type="text" id="url" placeholder="Wklej link z YouTube">
+        <button onclick="download()">Pobierz MP4</button>
+        <p id="msg"></p>
+    </div>
+
+    <script>
+        function download() {
+            const url = document.getElementById('url').value;
+            if(!url) return alert('Wklej link!');
+            document.getElementById('msg').innerText = "Pobieranie rozpoczęte...";
+            // Przekierowanie do endpointu serwera
+            window.location.href = `/download?url=${encodeURIComponent(url)}`;
+        }
+    </script>
+</body>
+</html>
